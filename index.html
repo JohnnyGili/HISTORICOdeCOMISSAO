@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+var menu;
+var dados_ve_nome=[];
+var dados_ve_total=[];
+var dados_ve_somenteComissão=[];
+var dados_porcentagem=[];
+//loop do menu
+do{
+    menu=prompt("HISTÓRICO DE COMISSÃO:\n1-Inserir venda.\n2-Total vendido e comissão.\n3-Alterar venda/comissão.\n0-Sair/Fechar.");
+    if(menu==1){
+        //pedir dados
+        ve_nome=prompt("Me diga o nome de sua venda.");
+        ve_valorDeUnidade=prompt("Me diga o valor de uma unidade de sua venda.");
+        ve_quantidade=prompt("Me diga a quantidade.");
+        ve_porcentagem=prompt("Me diga quanto é a porcentagem sua venda.");
+
+        //contas
+        ve_total=ve_valorDeUnidade*ve_quantidade;
+        ve_comPorcentagemAjustada=ve_porcentagem/100;
+        ve_somenteComissão=(ve_total*ve_comPorcentagemAjustada);
+
+        //armazenar os dados em arrays
+        dados_ve_nome.push(ve_nome);
+        dados_ve_total.push(ve_total);
+        dados_ve_somenteComissão.push(ve_somenteComissão);
+        dados_porcentagem.push(ve_porcentagem);
+
+    }else if(menu==2){
+        //mostrar lista de vendas
+        for(i=0;i<=dados_ve_nome.length-1;i++){
+            alert("Posição: "+[i]+".\nO nome de sua venda é: "+dados_ve_nome[i]+".\nO total com comissão é: "+dados_ve_total[i]+".\nA porcentagem da comissão é: "+dados_porcentagem[i]+"%.\nO valor somente da comissão é: "+dados_ve_somenteComissão[i]+".");
+        };
+    }else if(menu==3){
+        //alterar venda
+        posição=prompt("Me diga qual é a posição:");
+        x=(dados_porcentagem[posição]=prompt("Me diga a nova porcentagem:")/100);
+        dados_ve_somenteComissão[posição]=dados_ve_total[posição]*x;
+    };
+}while(menu!=0);
+ </script>   
+</body>
+</html>
